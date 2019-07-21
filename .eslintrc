@@ -1,0 +1,81 @@
+env:
+  browser: true
+  node: true
+  es6: true
+  jest: true
+extends:
+  - eslint:recommended
+  - plugin:import/errors
+  - plugin:import/warnings
+  - plugin:react/recommended
+parserOptions:
+  ecmaFeatures:
+    spread: true
+    restParams: true
+    jsx: true
+    generators: true
+  sourceType: module
+parser: babel-eslint
+plugins:
+  - react
+  - import
+settings:
+  react:
+    version: "16.8"
+  import/resolver:
+    node:
+      exclude:
+        - plugins/
+      extensions:
+        # if unset, default is just '.js', but it must be re-added explicitly if set
+        - .js
+        - .jsx
+      moduleDirectory:
+        - node_modules
+        - src
+globals:
+  __DEV__: true
+rules:
+  # Generic
+  comma-dangle: ["warn", "always-multiline"]
+  comma-spacing: ["warn", { "before": false, "after": true }]
+  space-infix-ops: "warn"
+  no-multi-spaces: "warn"
+  no-trailing-spaces: ["warn", { "skipBlankLines": true }]
+  no-whitespace-before-property: "error"
+  no-spaced-func: "error"
+  space-before-blocks: ["warn", { "functions": "always", "keywords": "always", classes: "always" }]
+  space-in-parens: ["warn", "never"]
+  space-unary-ops: "warn"
+  object-curly-spacing: ["error", "always"]
+  keyword-spacing: "warn"
+  key-spacing: "warn"
+  eol-last: ["warn", "always"]
+  no-shadow: ["error", { allow: ["options"] }]
+
+  # React
+  react/no-string-refs: "error"
+  react/jsx-indent-props: ["warn", 2]
+  react/jsx-key: "error"
+  react/jsx-first-prop-new-line: [1, multiline]
+  react/jsx-indent: ["warn", 2]
+  react/jsx-pascal-case: "error"
+  react/jsx-tag-spacing: ["error", { "beforeSelfClosing": "never"}]
+  react/jsx-no-bind: "off"
+  react/jsx-curly-brace-presence: ["error", { props: "never", children: "never" }]
+  jsx-quotes: ["error", "prefer-double"]
+  indent: ["warn", 2, { "SwitchCase": 1, "MemberExpression": 0 }]
+  no-unused-vars: "warn"
+  #no-best-before-comments: "warn"
+  curly: "error"
+  no-warning-comments: ["warn", { "terms": ["todo", "fixme", "xxx"], "location": "start" }]
+  no-console: "off"
+  generator-star-spacing: ["warn", after]
+  no-useless-constructor: "error"
+  import/no-unresolved: ["error", {commonjs: true}]
+  quotes:
+    - warn
+    - double
+  semi:
+    - error
+    - never
